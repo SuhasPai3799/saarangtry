@@ -1,0 +1,114 @@
+<html>
+<head>
+	<title>
+		Search box
+	</title>
+</head>
+<body>
+  	
+	<style type="text/css">
+		fieldset{
+			padding:10px;
+			margin-left: 500px;
+			width: 400px;
+		}
+	</style>
+	<fieldset style=300px name="form1" >
+		Search for an animal here!:<input type="text" name="inputbox" id="inputbox" size="20" maxlength="20" onkeyup="capitalizeit();generatelist()">
+		<input type="submit" name="SearchBox" value="search" onclick="letsdoit(inputbox)" >
+		<ul>
+			<li id="0" onclick="changeit(0)"></li>
+			<li id="1" onclick="changeit(1)"></li>
+			<li id="2" onclick="changeit(2)"></li>
+			<li id="3" onclick="changeit(3)"></li>
+		</ul>
+		<style type="text/css">
+			li{
+				list-style-type: none
+			}
+		</style>
+		
+		
+	</fieldset>
+	<div id="Caption" ><img src="" name="fill" id="fill" width="300" height="300" /><br></div>
+	<style type="text/css">
+		div{
+			font-family:cursive;
+			margin-left: 530px
+		}
+	</style>
+	
+	<p id="check" name="check" ></p>
+	<script type="text/javascript">
+		var char=document.getElementById("Caption").innerHTML
+
+  		var anim= new Array("Monkey","Donkey","Elephant","Dog");
+  		var animdesc=new Array("The Monkey is a primitve form of a human","The Donkey does a lot of work","Elephants never forget","Dogs are man's best friends")
+  		var ctr=0;
+  		var ctr1=0;
+  		function counter()
+  		{
+  			
+  			ctr=inputbox.value.length
+  			if(ctr-ctr1==0)
+  				return false
+  			else
+  				{
+  					ctr1++
+  					return true
+  				}
+
+
+  		}
+  		function letsdoit(a)
+  		{
+  			if(anim.indexOf(a.value)>-1)
+  				{
+  					document.fill.src=a.value+".jpg"
+  					var t=document.getElementById("Caption").innerHTML
+  					var num=t.indexOf("r>")
+  					var l=t.slice(0,num+2)
+  					document.getElementById("Caption").innerHTML=l+animdesc[anim.indexOf(a.value)]
+  		}
+  	}
+  		function changeit(b)
+  		{
+  			inputbox.value=document.getElementById(b.toString()).innerHTML
+  		}
+  		function generatelist()
+  		{
+  			
+  			if(counter())
+  			{
+  				if(inputbox.value!="")
+  					{	
+  						var ctr=0
+  						var char=inputbox.value
+  						for(i=0;i<anim.length;i++)
+  							{
+  				
+  				
+  								if(anim[i].indexOf(char)>-1)
+  									{
+
+  										document.getElementById(i.toString()).innerHTML=anim[i]
+  									}
+  								else
+  									{
+  										document.getElementById(i.toString()).innerHTML=""
+  									}
+
+  				
+  							}
+
+  					}
+  			}	
+  	}
+  	function capitalizeit()
+  	{
+  		if(inputbox.value.length==1)
+  		inputbox.value=inputbox.value.toUpperCase()
+  	}
+  	</script>
+</body>
+</html>
